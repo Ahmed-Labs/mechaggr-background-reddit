@@ -41,10 +41,10 @@ const prisma = new PrismaClient();
 const fetchLimit = 25;
 const otherRequester = new snoowrap({
     userAgent: "getSubmissions",
-    clientId: process.env.DISCORD_CLIENT_ID,
-    clientSecret: process.env.DISCORD_CLIENT_SECRET,
-    username: process.env.DISCORD_USERNAME,
-    password: process.env.DISCORD_PASSWORD,
+    clientId: process.env.REDDIT_CLIENT_ID,
+    clientSecret: process.env.REDDIT_CLIENT_SECRET,
+    username: process.env.REDDIT_USERNAME,
+    password: process.env.REDDIT_PASSWORD,
 });
 function processPost(Post) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -56,7 +56,7 @@ function processPost(Post) {
 function monitorPosts() {
     return __awaiter(this, void 0, void 0, function* () {
         const submissions = new SubmissionStream(otherRequester, {
-            subreddit: "testingground4bots",
+            subreddit: "mechmarket",
             limit: fetchLimit,
             pollTime: 2000,
         });
