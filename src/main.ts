@@ -5,7 +5,7 @@ const { SubmissionStream } = require("snoostorm");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const fetchLimit = 15;
+const fetchLimit = 25;
 
 const otherRequester = new snoowrap({
   userAgent: "getSubmissions",
@@ -39,7 +39,6 @@ async function monitorPosts() {
   const connectedAt = Date.now() / 1000;
   submissions.on("item", (item: any) => {
     if (connectedAt > item.created_utc) return;
-    console.log(item.title);
     const postInfo = {
       title: item.title,
       author: item.author.name,
@@ -68,5 +67,5 @@ main()
     process.exit(1);
   });
 
-//npx ts-node .\main.ts
+//npx ts-node .\src\main.ts
 //echo $DATABASE_URL
